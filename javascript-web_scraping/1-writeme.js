@@ -1,9 +1,15 @@
 #!/usr/bin/node
+const fs = require("fs");
 
-const fs = require('fs');
+const FILE_PATH = PROCESS.ARGV[2];
+const STRING_TO_WRITE = PROCESS.ARGV[3];
 
-fs.writeFile(process.argv[2], process.argv[3], 'utf8', function (err) {
-  if (err) {
-    console.log(err);
-  }
+if (!FILE_PATH || !STRING_TO_WRITE) {
+    console.log("Error: devuelve una ruta válida");
+    process.exit(1);
+}
+fs.writeFile(FILE_PATH, STRING_TO_WRITE, "utf-8", (err) => {
+    if (err) {
+        console.log(err);
+    }
 });
