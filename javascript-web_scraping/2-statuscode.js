@@ -2,6 +2,16 @@
 
 const request = require('request');
 
-request(process.argv[2], function (_err, res) {
-  console.log('code:', res.statusCode); // Print the response status code if a response was received
+const url = process.argv[2];
+
+// Realizar una solicitud GET al URL
+request.get(url, (error, response) => {
+  if (error) {
+    // Manejar errores de solicitud
+    console.error('Error:', error);
+  } else {
+    // Imprimir el código de estado de la respuesta
+    console.log(`code: ${response.statusCode}`);
+  }
 });
+
