@@ -4,14 +4,15 @@ const request = require('request');
 
 const url = process.argv[2];
 
-// Realizar una solicitud GET al URL
-request.get(url, (error, response) => {
-  if (error) {
-    // Manejar errores de solicitud
-    console.error('Error:', error);
-  } else {
-    // Imprimir el código de estado de la respuesta
-    console.log(`code: ${response.statusCode}`);
-  }
-});
+if (!url) {
+  console.log('No se encuentra una URL');
+  process.exit(1);
+}
 
+request(url, function (err, response) {
+  if (err) {
+    console.log(err);
+    process.exit(1);
+  }
+  console.log(`code: ${response.statusCode}`);
+});
