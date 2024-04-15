@@ -3,11 +3,15 @@ const fs = require('fs');
 
 const FILE_PATH = PROCESS.ARGV[2];
 
-const DATATOWRITE = PROCESS.ARGV[3];
+const DATA_TO_WRITE = PROCESS.ARGV[3];
 
-fs.writeFile(FILE_PATH, DATATOWRITE, 'utf-8', (err) => {
-    if (err) {
-        console.error('Error writing file:', err);
-        return;
-    }
+if (!FILE_PATH) {
+  console.log('Error: La ruta proporionada no es vÃlida.');
+  process.exit(1);
+}
+
+fs.writeFile(FILE_PATH, STRING_TO_WRITE, 'utf-8', (err) => {
+  if (err) {
+    console.log(err);
+  }
 });
