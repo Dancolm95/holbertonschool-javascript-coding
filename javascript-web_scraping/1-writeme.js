@@ -2,9 +2,9 @@
 
 const fs = require('fs');
 
-const FILE_PATH = process.ARGV[2];
+const FILE_PATH = process.argv[2];
 
-const DATA_TO_WRITE = process.ARGV[3];
+const DATA_TO_WRITE = process.argv[3];
 
 if (!FILE_PATH) {
   console.log('Error: La ruta proporionada no es valida.');
