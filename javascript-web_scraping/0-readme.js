@@ -1,12 +1,17 @@
 #!/usr/bin/node
 
 const fs = require('fs');
-const argv = process.argv;
+const filePath = process.argv[2];
 
-fs.readFile(argv[2], 'utf8', function (error, data) {
-  if (err) {
-    console.log(err);
+if (!filePath) {
+  console.error('Error: ruta no valida.');
+  process.exit(1);
+}
+
+fs.readFile(filePath, 'utf-8', (error, data) => {
+  if (error) {
+    console.error(error);
   } else {
-    console.log(data.toString());
+    console.log(data);
   }
 });
