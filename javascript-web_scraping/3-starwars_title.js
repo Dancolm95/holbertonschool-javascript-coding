@@ -9,7 +9,7 @@ request(url + '/' + id, function (error, response, body) {
   if (error) {
     console.log(error);
   } else {
-    const title = JSON.parse(body).tittle;
-    console.log(tittle);
+    const title = JSON.parse(body).title;
+    console.log(title);
   }
 });
