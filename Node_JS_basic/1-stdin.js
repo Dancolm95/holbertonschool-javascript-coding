@@ -4,7 +4,7 @@ process.stdin.resume();
 // once input is entered
 process.stdin.on('readable', () => {
   const name = process.stdin.read();
-  process.stdout.write('Your name is: ${name}\n');
+  process.stdout.write('Your name is: ${name}');
   // check if input is coming from the terminal
   if (process.stdin.isTTY) {
     process.exit();
