@@ -1,19 +1,29 @@
 #!/usr/bin/node
+// Loripsum
 
 const request = require('request');
-const urlApi = process.argv[2];
+const fs = require('fs');
+const url = process.argv[2];
 const filePath = process.argv[3];
 
-request(urlApi, function (error, response, body) {
-  if (error) {
-    console.log(error); // Print the error if one occurred
-  } else {
-    const fs = require('fs');
+if (!url || !filePath) {
+  console.log('Ingrea un URL y un archivo de destino');
+  process.exit(1);
+}
 
-    fs.writeFile(filePath, body, 'utf-8', (err) => {
+request(url, function (err, response, body) {
+  if (err) {
+    console.log(err);
+    process.exit(1);
+  }
+
+  if (response.statusCode === 200) {
+    fs.writeFile(filePath, body, 'utf-8', function (err) {
       if (err) {
-        return console.error(err);
+        console.log(err);
       }
     });
+  } else {
+    console.log(`Error: ${response.statusCode}`);
   }
 });
